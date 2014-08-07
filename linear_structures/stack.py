@@ -16,3 +16,36 @@ class Stack:
 
     def size(self):
         return len(self.items)
+
+def revstring(_str):
+    s = Stack()
+    for i in _str:
+        s.push(i)
+
+    rev = []
+
+    while not s.isEmpty(): 
+        rev.append(s.pop())
+
+    return ''.join(rev)
+
+def checkPar(_str):
+    s = Stack()
+    balanced = True
+
+    for i in _str:
+        if i == '(' and balanced:
+            s.push(i)
+
+        else:
+            if s.isEmpty():
+                balanced = False
+
+            if i == ')' and balanced:
+                s.pop()
+
+    if s.isEmpty() and balanced:
+        return True
+    else:
+        return False
+
